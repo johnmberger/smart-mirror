@@ -54,7 +54,7 @@ function updateCurrentWeather() {
 
   // Update current temp and text description
   currentLocation.innerHTML = locationNow;
-  
+
   tempNow.innerHTML = currentWeather.temp;
   highNow.innerHTML = currentWeather.high;
   lowNow.innerHTML = currentWeather.low;
@@ -63,5 +63,11 @@ function updateCurrentWeather() {
   // Update current weather icon
   $iconNow.empty();
   $iconNow.append(currentWeather.icon);
+  iconMover();
+}
 
+// Weather icon position helper
+function iconMover() {
+  var width = $("#current-temp").outerWidth;
+  $('#current-icon').css('margin-left', width);
 }

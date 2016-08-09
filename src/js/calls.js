@@ -11,7 +11,6 @@ function getCommuteInfo() {
   };
   directionsService.route(request, function(data) {
     commuteTime = data.routes[0].legs[0].duration.text;
-
     // Call function now
     updateTravelTime();
 
@@ -119,7 +118,7 @@ function getCurrentWeather() {
   }).done(function(result) {
 
     // Setting current temp (rounding up)
-    currentWeather.temp =  Math.ceil(result.currently.temperature);
+    currentWeather.temp =  Math.ceil(result.currently.temperature) + '°';
 
     // Updating current weather with current info
     updateCurrentWeather();

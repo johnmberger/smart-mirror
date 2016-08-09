@@ -16,7 +16,7 @@ p {
 /* weather widget */
 .top-right {
   max-width: 25%;
-  margin-right: 5%;
+  margin-right: 2%;
 }
 .current-weather-container {
   position: relative;
@@ -27,16 +27,20 @@ p {
 .current-weather-container h2 {
   margin-top: 0;
 }
+
 .inline-headers h1, .inline-headers h3, .inline-headers h4 {
   display: inline-block;
-  margin-right: 7%;
+  margin-right: 3%;
 }
-table tr td {
-  padding: 10px 15px;
-  font-size: 2.5rem;
+.inline-headers h3 {
+  margin-right: 6%;
 }
 table {
-  align-self: center;
+  padding-left: 0;
+}
+table tr td {
+  padding: 10px 50px 10px 0;
+  font-size: 2.5rem;
 }
 .high {
   color: floralwhite;
@@ -53,7 +57,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: 160px;
+  margin-left: 210px;
   margin-top: 30px;
   font-size: 6rem;
 }
@@ -66,7 +70,7 @@ table {
   position: relative;
 }
 .date-container, .directions-container, .news-container {
-  margin-left: 5%;
+  margin-left: 3%;
 }
 .time-container h1{
   font-size: 14rem;
@@ -93,6 +97,10 @@ label {
   vertical-align: middle;
   font-size: 1.5rem;
 }
+input[type="submit"] {
+  margin-top: 25px;
+  vertical-align: text-top;
+}
 .initialize-form {
   max-width: 800px;
 }
@@ -106,6 +114,9 @@ label {
 .radio-buttons {
   text-align: center;
 }
+.affirm-check {
+  margin-top: 15px;
+}
 
 /* full screen button */
 .fullscreen-wrapper {
@@ -114,6 +125,6 @@ label {
   width: 100%;
   height: 100%;
 }
-.full-screen-button {
+.middle-of-screen {
   margin-top: 25%
 }

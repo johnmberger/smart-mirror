@@ -7,5 +7,10 @@ function requestFullScreen() {
     // Native full screen.
     requestMethod.call(body);
   }
-  $('.fullscreen-wrapper').remove();
+  $('#fullscreen').remove();
+
+  if ($('affirm-checkbox').checked === false) {
+    affirm();
+  }
+
 }

@@ -27,7 +27,7 @@
             <hr>
             <h3 class="text-center">Home Address <small>(where you hang your mirror)</small></h3>
             <div class="col-sm-9">
-              <label for="home-address">Home Street Address</label>
+              <label for="home-address">Home Street Address <em>without</em> apartment number</label>
               <input type="text" class="form-control" name="home-" id="home-address" placeholder="123 Home Street" required>
             </div>
             <div class="col-sm-3">
@@ -65,6 +65,9 @@
                 <input class="form-check-input" type="radio" name="commuteOptions" id="walking" value="WALKING"><i class="fa fa-2x fa-male" aria-hidden="true"></i> Walking
               </label>
             </div>
+          </div>
+          <div class="col-md-12 text-center affirm-check">
+            <label><input type="checkbox" id="affirm-checkbox"> I'm creeped out when mirrors talk to me.</label>
           </div>
           <div class="col-sm-12">
             <input type="submit" class="btn btn-primary btn-block" name="submit" value="Submit">
@@ -114,7 +117,7 @@
         <div id="current-icon" class="current-icon pull-right"></div>
       </div>
 
-      <table class="text-center">
+      <table>
         <br>
         <tr>
           <td class="day" id="day-tomorrow"></td>
@@ -138,7 +141,7 @@
     </div>
 
     <div class="fullscreen-wrapper">
-      <input type='button' class='btn btn-danger btn-lg full-screen-button' value='Go Fullscreen' onclick='requestFullScreen()' id='fullscreen'>
+      <input type='button' class='btn btn-danger btn-lg middle-of-screen' value='Go Fullscreen' onclick='requestFullScreen()' id='fullscreen'>
     </div>
 
     <!-- scripts -->
@@ -156,6 +159,7 @@
     <script type="text/javascript" src="src/js/commute.js"></script>
     <script type="text/javascript" src="src/js/news.js"></script>
     <script type="text/javascript" src="src/js/weather-icon-map.js"></script>
+    <script type="text/javascript" src="src/js/affirmations.js"></script>
     <script type="text/javascript" src="src/js/main.js"></script>
   </body>
 </html>
