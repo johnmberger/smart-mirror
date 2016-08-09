@@ -1,0 +1,119 @@
+body {
+  background: black;
+  color: white;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+i {
+  padding: 5px;
+}
+p {
+  font-size: 2rem;
+}
+
+/* weather widget */
+.top-right {
+  max-width: 25%;
+  margin-right: 5%;
+}
+.current-weather-container {
+  position: relative;
+}
+.current-weather-container h1{
+  font-size: 14rem;
+}
+.current-weather-container h2 {
+  margin-top: 0;
+}
+.inline-headers h1, .inline-headers h3, .inline-headers h4 {
+  display: inline-block;
+  margin-right: 7%;
+}
+table tr td {
+  padding: 10px 15px;
+  font-size: 2.5rem;
+}
+table {
+  align-self: center;
+}
+.high {
+  color: floralwhite;
+  font-size: 2.5rem;
+}
+.low {
+  color: lightslategrey;
+  font-size: 2.5rem;
+}
+.day {
+  font-size: 2.5rem;
+}
+.current-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 162px;
+  margin-top: 30px;
+  font-size: 6rem;
+}
+
+/* time, date, commute, and news widget */
+.top-left {
+  width: 50%;
+  margin-left: 2%;
+  height: 100vh;
+  position: relative;
+}
+.date-container, .directions-container, .news-container {
+  margin-left: 5%;
+}
+.time-container h1{
+  font-size: 14rem;
+}
+.directions-container i, .directions-container h3 {
+  display: inline-block;
+  margin-right: 5px;
+}
+.news-container {
+  position: absolute;
+  bottom: 25px;
+}
+article i, article p {
+  display: inline;
+  vertical-align: middle;
+  font-size: 1.75rem;
+}
+
+/* initialize form */
+input[type="submit"] {
+  margin-top: 25px;
+}
+label {
+  vertical-align: middle;
+  font-size: 1.5rem;
+}
+.initialize-form {
+  max-width: 800px;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: black;
+}
+.radio-buttons {
+  text-align: center;
+}
+
+/* full screen button */
+.fullscreen-wrapper {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.full-screen-button {
+  margin-top: 25%
+}
