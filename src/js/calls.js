@@ -44,7 +44,7 @@ function getWeather() {
     // weather underground forecast API call
     $.ajax({
       type: 'GET',
-      url: 'http://api.wunderground.com/api/e08af41f3bd0ad92/forecast/q/' + state + '/' + city + '.json',
+      url: 'https://api.wunderground.com/api/e08af41f3bd0ad92/forecast/q/' + state + '/' + city + '.json',
     }).done(function(results) {
 
       // Set names of next three days
@@ -110,7 +110,7 @@ function getCurrentWeather() {
   // Open weather map API call
   $.ajax({
     type: 'GET',
-    url: 'http://api.openweathermap.org/data/2.5/weather?zip=' + homeZip + ',us&APPID=de62b1f3fdc3a4328f7e51a0be71e71e'
+    url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + homeZip + ',us&APPID=de62b1f3fdc3a4328f7e51a0be71e71e'
   }).done(function(result) {
 
     // Setting Current Location
