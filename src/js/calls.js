@@ -32,10 +32,13 @@ function getWeather() {
 
   }).done(function(data) {
 
-    // Setting city and state based on home address
+    // Setting city, state, and latitute/longitude based on home address
     var state = data.results[0].address_components[data.results[0].address_components.length - 4].short_name;
 
     var city = data.results[0].address_components[3].long_name;
+    locationNow = data.results[0].address_components[3].long_name;
+
+    latLong = data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng;
 
     //re-formatting city name
     city = city.replace('St.', 'Saint');
@@ -104,20 +107,19 @@ function getWeather() {
   });
 }
 
-var locationNow;
-
 function getCurrentWeather() {
-  // Open weather map API call
+
+  var forecastUrl = 'https://api.forecast.io/forecast/c979c2d9632bfb5cf848267a7b1ff63b/' + latLong;
+
+  // forecast.io API call
   $.ajax({
     type: 'GET',
-    url: 'https://api.openweathermap.org/data/2.5/weather?zip=' + homeZip + ',us&APPID=de62b1f3fdc3a4328f7e51a0be71e71e'
+    dataType: 'jsonp',
+    url: forecastUrl,
   }).done(function(result) {
 
-    // Setting Current Location
-    locationNow = result.name;
-
-    // Converting K temp to F and rounding up
-    currentWeather.temp =  Math.ceil((((result.main.temp)*9/5)- 459.67));
+    // Setting current temp (rounding up)
+    currentWeather.temp =  Math.ceil(result.currently.temperature);
 
     // Updating current weather with current info
     updateCurrentWeather();

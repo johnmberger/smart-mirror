@@ -4,6 +4,9 @@ var workAddress;
 var workZip;
 var commuteOption;
 var commuteTime;
+var latLong;
+var locationNow;
+
 const forecast = {
   tomorrow: {
     day: '',

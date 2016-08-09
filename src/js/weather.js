@@ -54,6 +54,7 @@ function updateCurrentWeather() {
 
   // Update current temp and text description
   currentLocation.innerHTML = locationNow;
+  
   tempNow.innerHTML = currentWeather.temp;
   highNow.innerHTML = currentWeather.high;
   lowNow.innerHTML = currentWeather.low;

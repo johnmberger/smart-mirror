@@ -53,14 +53,14 @@ table {
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: 162px;
+  margin-left: 160px;
   margin-top: 30px;
   font-size: 6rem;
 }
 
 /* time, date, commute, and news widget */
 .top-left {
-  width: 50%;
+  width: 65%;
   margin-left: 2%;
   height: 100vh;
   position: relative;
