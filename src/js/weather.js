@@ -22,6 +22,11 @@ var highNow = document.getElementById('current-high');
 var lowNow = document.getElementById('current-low');
 var statusNow = document.getElementById('current-status');
 
+var homeAddress;
+var homeZip;
+var workAddress;
+var workZip;
+
 // Update forecast
 function updateForecast() {
 

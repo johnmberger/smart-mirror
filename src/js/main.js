@@ -1,11 +1,6 @@
-var homeAddress;
-var homeZip;
-var workAddress;
-var workZip;
-var commuteOption;
-var commuteTime;
 var latLong;
 var locationNow;
+var affirmMarker = true;
 
 const forecast = {
   tomorrow: {
@@ -59,6 +54,11 @@ $('form').on('submit', function(event) {
   } else {
     $('.directions-container').prepend('<i class="fa fa-2x fa-car" aria-hidden="true"></i>');
   }
+
+  if ($('#affirm-checkbox').is(':checked')) {
+    affirmMarker = false;
+  }
+
   getWeather();
   getCommuteInfo();
   getNews();

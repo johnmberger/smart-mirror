@@ -9,8 +9,10 @@ function requestFullScreen() {
   }
   $('#fullscreen').remove();
 
-  if ($('affirm-checkbox').checked === false) {
-    affirm();
+  if (affirmMarker) {
+    setTimeout(function() {
+      affirm();
+    },2500);
   }
 
 }

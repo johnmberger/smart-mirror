@@ -1,4 +1,6 @@
 // Makes google maps direction API call
+var commuteOption;
+
 function getCommuteInfo() {
 
   var directionsService = new google.maps.DirectionsService();
