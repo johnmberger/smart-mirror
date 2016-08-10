@@ -21,7 +21,7 @@ function affirm() {
     setTimeout(function(){
       $('.affirmation').fadeOut(2500);
     }, 6000);
-  };
+  }
 
   printToMirror();
 

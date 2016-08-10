@@ -1,6 +1,6 @@
 $(document).ready(function() {
   getNews();
-})
+});
 
 $('form').on('submit', function(event) {
   event.preventDefault();

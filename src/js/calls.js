@@ -176,5 +176,5 @@ function getNews() {
     }, 600000);
   }).fail(function() {
     alert('News API error occurred!');
-  })
+  });
 }

@@ -33,4 +33,4 @@ const news = {
   article2: '',
   article3: '',
   article4: '',
-}
+};
