@@ -26,11 +26,13 @@
 
   <body>
     <div class="wrapper">
+      <!-- initial form -->
       <section class="container initialize-form">
         <form method="post">
           <fieldset>
             <h1 class="text-center">We need to know a few things to get started:</h1>
             <hr>
+            <!-- home info -->
             <h3 class="text-center">Home Address <small>(where you hang your mirror)</small></h3>
             <div class="col-sm-9">
               <label for="home-address">Home Street Address <em>without</em> apartment number</label>
@@ -43,6 +45,7 @@
             <br>
           </fieldset>
           <fieldset>
+            <!-- work info -->
             <h3 class="text-center">Work Address <small>(for commute information)</small></h3>
             <div class="col-sm-9">
               <label for="work-address">Work Address</label>
@@ -54,6 +57,8 @@
             </div>
             <br>
           </fieldset>
+
+          <!-- commute options -->
           <div class="form-group radio-buttons">
             <h3 class="text-center">How Do You Commute to Work?</h3>
             <div class="col-sm-4">
@@ -72,6 +77,7 @@
               </label>
             </div>
           </div>
+          <!-- check for mirror message preferences -->
           <div class="col-md-12 text-center affirm-check">
             <hr>
             <label><input type="checkbox" id="affirm-checkbox" value="optOut"> Turn off mirror messages</label>
@@ -89,6 +95,7 @@
     </div>
 
     <div class="top-left pull-left">
+      <!-- time, date, and commute time -->
       <div class="time-container">
         <h1 id="time"></h1>
       </div>
@@ -99,6 +106,7 @@
         <h3>Current commute time: </h3>
         <h3 id="travel-time"></h3>
       </div>
+      <!-- news article containers -->
       <div class="news-container pull-left">
         <article>
           <i class="fa fa-2x fa-newspaper-o" aria-hidden="true"></i>
@@ -120,6 +128,7 @@
     </div>
 
     <div class="top-right pull-right">
+      <!-- current weather widget -->
       <div class="current-weather-container inline-headers">
         <h1 id="current-temp"></h1>
         <h3 class="high" id="current-high"></h3>
@@ -133,6 +142,7 @@
         <div id="current-icon" class="current-icon pull-right"></div>
       </div>
       <hr>
+      <!-- forecast table -->
       <table>
         <tr>
           <td class="day" id="day-tomorrow"></td>
@@ -162,6 +172,8 @@
     <!-- scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- barf -->
+    <script type="text/javascript" src="src/js/consts.js"></script>
     <script type="text/javascript" src="src/js/form-validation.js"></script>
     <script type="text/javascript" src="src/js/calls.js"></script>
     <script type="text/javascript" src="src/js/full-screen.js"></script>
