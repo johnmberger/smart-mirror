@@ -46,7 +46,7 @@
           </fieldset>
           <fieldset>
             <!-- work info -->
-            <h3 class="text-center">Work Address <small>(for commute information)</small></h3>
+            <h3 class="text-center">Work Info <small>(for commute information)</small></h3>
             <div class="col-sm-9">
               <label for="work-address">Work Address</label>
               <input type="text" name="work-address" class="form-control" id="work-address" placeholder="123 Office Drive" required>
@@ -59,8 +59,8 @@
           </fieldset>
 
           <!-- commute options -->
-          <div class="form-group radio-buttons">
-            <h3 class="text-center">How Do You Commute to Work?</h3>
+          <div class="form-group radio-buttons col-md-6">
+            <h3 class="text-center">How do you commute to work?</h3>
             <div class="col-sm-4">
               <label class="form-check-inline">
                 <input class="form-check-input" type="radio" name="commuteOptions" id="driving" value="DRIVING" checked><i class="fa fa-2x fa-car" aria-hidden="true"></i>Driving
@@ -77,6 +77,16 @@
               </label>
             </div>
           </div>
+          <!-- leaving time -->
+          <div class="col-md-6 text-center">
+            <fieldset>
+              <h3>What time do you have to be at work?</h3>
+              <div class="col-md-6 col-md-offset-3">
+                <input type="time" class="form-control" name="leaveTime" id="leaveTime">
+              </div>
+            </fieldset>
+          </div>
+
           <!-- check for mirror message preferences -->
           <div class="col-md-12 text-center affirm-check">
             <hr>
@@ -86,11 +96,6 @@
             <input type="submit" class="btn btn-primary btn-block" name="submit" value="Submit">
           </div>
         </form>
-        <div class="col-md-12 text-center">
-          <br>
-          <br>
-          <p>* Refresh this page to reset the mirror *</p>
-        </div>
       </section>
     </div>
 
@@ -102,9 +107,13 @@
       <div class="date-container">
         <h1 id="date"></h1>
       </div>
-      <div class="directions-container">
+      <div class="directions-container commute-time">
         <h3>Current commute time: </h3>
         <h3 id="travel-time">Loading...</h3>
+      </div>
+      <div class="directions-container countdown">
+        <i class="fa fa-2x fa-clock-o" aria-hidden="true"></i>
+        <h3>Leave in</h3><h3 id="time-to-leave">[Loading]</h3><h3 id="post-time">minutes to get to work on time</h3>
       </div>
       <!-- news article containers -->
       <div class="news-container pull-left">

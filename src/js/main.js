@@ -14,16 +14,22 @@ $('form').on('submit', function(event) {
   commuteOption = $('input:radio[name="commuteOptions"]:checked').val();
 
   if (commuteOption === 'BICYCLING') {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-bicycle" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-bicycle" aria-hidden="true"></i>');
   } else if (commuteOption === 'WALKING') {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-male" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-male" aria-hidden="true"></i>');
   } else {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-car" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-car" aria-hidden="true"></i>');
   }
 
   if ($('#affirm-checkbox').is(':checked')) {
     affirmMarker = false;
   }
+
+  var convertTime = $('#leaveTime').val().split(':')
+  for (var i = 0; i < convertTime.length; i++) {
+    convertTime[i] = parseInt(convertTime[i]);
+  };
+  workArrivalTime = (convertTime[0] * 60) + convertTime[1];
 
   getWeather();
   getCommuteInfo();

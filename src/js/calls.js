@@ -27,6 +27,7 @@ function getCommuteInfo() {
 
       // Call update function now
       updateTravelTime();
+      getLeaveByTime();
 
       // Set looping 10-minute interval update
       setInterval(function() {
