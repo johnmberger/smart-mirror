@@ -108,6 +108,9 @@ function getWeather() {
       // Set current text forecast (only the first two sentences)
       currentWeather.stat = results.forecast.txt_forecast.forecastday[0].fcttext.split('.').slice(0,2).join('. ') + '.';
 
+      // Set current chance of rain
+      currentWeather.chanceOfRain = results.forecast.txt_forecast.forecastday[0].pop + '%';
+
       // Call weather getters/setters now
       updateForecast();
       getCurrentWeather();
@@ -140,9 +143,6 @@ function getCurrentWeather() {
 
     // Setting current temp (rounding up)
     currentWeather.temp =  Math.ceil(result.currently.temperature) + '°';
-
-    // Set current chance of rain
-    currentWeather.chanceOfRain = (result.currently.precipProbability * 100) + '%';
 
     // Updating current weather with current info
     updateCurrentWeather();
