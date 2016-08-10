@@ -1,7 +1,10 @@
 // Makes google maps direction API call
 var commuteOption;
+var homeAddress;
+var homeZip;
+var workAddress;
+var workZip;
 
-// =-=-=-=- IJC -=-= Might consider establishing variables either outside, or refactor the function so it isn't 25 lines of code long :)
 function getCommuteInfo() {
 
   // Initialize google maps directions service
