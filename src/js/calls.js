@@ -1,4 +1,3 @@
-// Makes google maps direction API call
 var commuteOption;
 var homeAddress;
 var homeZip;
@@ -18,16 +17,23 @@ function getCommuteInfo() {
   };
   // grab commute time
   directionsService.route(request, function(data) {
-    commuteTime = data.routes[0].legs[0].duration.text;
 
-    // Call update function now
-    updateTravelTime();
+    if (data.status !== 'OK' || typeof data == 'undefined') {
+      alert('Invalid address. Please try again.');
+      location.reload();
+    } else {
 
-    // Set looping 10-minute interval update
-    setInterval(function() {
+      commuteTime = data.routes[0].legs[0].duration.text;
+
+      // Call update function now
       updateTravelTime();
-      console.log('Travel time updated!');
-    }, 600000);
+
+      // Set looping 10-minute interval update
+      setInterval(function() {
+        updateTravelTime();
+        console.log('Travel time updated!');
+      }, 600000);
+    }
   });
 }
 
@@ -113,7 +119,11 @@ function getWeather() {
         console.log('Forecast updated!');
         console.log('Current Weather Updated!');
       }, 600000);
+    }).fail(function() {
+      alert('Weather Underground API Error!');
     });
+  }).fail(function() {
+    alert('Google Geocoding API Error!');
   });
 }
 
@@ -137,6 +147,8 @@ function getCurrentWeather() {
     // Updating current weather with current info
     updateCurrentWeather();
 
+  }).fail(function() {
+    alert('Forecast.io API Error!');
   });
 }
 
@@ -162,5 +174,7 @@ function getNews() {
       updateNews();
       console.log('News Updated!');
     }, 600000);
+  }).fail(function() {
+    alert('News API error occurred!');
   })
 }

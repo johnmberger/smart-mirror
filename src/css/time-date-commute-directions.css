@@ -1,7 +1,7 @@
 /* time, date, commute, and news widget */
 
 .top-left {
-  width: 70%;
+  width: 65%;
   margin-left: 2%;
   height: 100vh;
   position: relative;
@@ -24,4 +24,5 @@ article i, article p {
   display: inline;
   vertical-align: middle;
   font-size: 1.75rem;
+  white-space: nowrap;
 }
