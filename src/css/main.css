@@ -23,3 +23,24 @@ p {
 .middle-of-screen {
   margin-top: 25%
 }
+
+/* warning screen */
+.warning-message {
+  position: fixed;
+  background-color: darkgrey;
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.warning-message h1 {
+  padding-top: 25%;
+}
+@media (max-height: 525px), (max-width: 1250px) {
+  .warning-message, .warning-message h1 {
+    visibility: visible;
+  }
+  .initialize-form, .blackdrop {
+    visibility: hidden;
+  }
+}

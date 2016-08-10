@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper blackdrop">
       <!-- initial form -->
       <section class="container initialize-form">
         <form method="post">
@@ -165,8 +165,14 @@
       </table>
     </div>
 
+    <!-- holds button in center -->
     <div class="fullscreen-wrapper">
       <input type='button' class='btn btn-danger btn-lg middle-of-screen' value='Go Fullscreen' onclick='requestFullScreen()' id='fullscreen'>
+    </div>
+
+    <!-- warning display for too-small screens -->
+    <div class="warning-message text-center">
+      <h1>For the best experience, please view this page on a larger screen.</h1>
     </div>
 
     <!-- scripts -->
