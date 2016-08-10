@@ -14,7 +14,7 @@ function affirm() {
 
   function printToMirror() {
 
-    var randomAffirmation = affirmations[Math.floor(Math.random() * affirmationArray.length)];
+    var randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
 
     $('.fullscreen-wrapper').append('<h1 class="middle-of-screen affirmation">' + randomAffirmation + '</h1>');
 
