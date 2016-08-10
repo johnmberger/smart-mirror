@@ -1,5 +1,9 @@
 var affirmMarker = true;
 
+$(document).ready(function() {
+  getNews();
+})
+
 $('form').on('submit', function(event) {
   event.preventDefault();
 
@@ -25,7 +29,6 @@ $('form').on('submit', function(event) {
 
   getWeather();
   getCommuteInfo();
-  getNews();
 
   $('.wrapper').fadeOut(2000, function() {
     $('.wrapper').remove();
