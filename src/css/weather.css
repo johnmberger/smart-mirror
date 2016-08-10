@@ -1,0 +1,54 @@
+/* weather widget */
+
+.top-right {
+  max-width: 25%;
+  margin-right: 2%;
+}
+.current-weather-container {
+  position: relative;
+}
+.current-weather-container h1{
+  font-size: 14rem;
+}
+.current-weather-container h2 {
+  margin-top: 0;
+}
+.inline-headers h1, .inline-headers h3, .inline-headers h4 {
+  display: inline-block;
+  margin-right: 3%;
+}
+.inline-headers h3 {
+  margin-right: 6%;
+}
+.inline-headers-nested i, .inline-headers-nested p, .inline-headers-nested h2 {
+  display: inline-block;
+}
+.inline-headers-nested h2 {
+  margin-right: 40px;
+}
+table {
+  padding-left: 0;
+}
+table tr td {
+  padding: 0 50px 10px 0;
+  font-size: 2.5rem;
+}
+.high {
+  color: floralwhite;
+  font-size: 2.5rem;
+}
+.low {
+  color: lightslategrey;
+  font-size: 2.5rem;
+}
+.day {
+  font-size: 2.5rem;
+}
+.current-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 200px;
+  margin-top: 30px;
+  font-size: 6rem;
+}
