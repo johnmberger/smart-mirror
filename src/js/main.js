@@ -1,5 +1,3 @@
-var affirmMarker = true;
-
 $(document).ready(function() {
   getNews();
 })
