@@ -14,11 +14,11 @@ function affirm() {
 
     var randomAffirmation = affirmationArray[Math.floor(Math.random() * affirmationArray.length)];
 
-    $('.fullscreen-wrapper').append('<h2 class="middle-of-screen affirmation">' + randomAffirmation + '</h2>');
+    $('.fullscreen-wrapper').append('<h1 class="middle-of-screen affirmation">' + randomAffirmation + '</h1>');
 
     setTimeout(function(){
-    $('.affirmation').fadeOut(2500);
-  }, 6000);
+      $('.affirmation').fadeOut(2500);
+    }, 6000);
   };
 
   printToMirror();

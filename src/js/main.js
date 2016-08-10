@@ -1,7 +1,3 @@
-var latLong;
-var locationNow;
-var affirmMarker = true;
-
 const forecast = {
   tomorrow: {
     day: '',
@@ -22,19 +18,24 @@ const forecast = {
     icon: '',
   },
 };
+
 const currentWeather = {
   temp: 0,
   high: 0,
   low: 0,
   stat: '',
   icon: '',
+  chanceOfRain: '',
 };
+
 const news = {
   article1: '',
   article2: '',
   article3: '',
   article4: '',
 }
+
+var affirmMarker = true;
 
 $('form').on('submit', function(event) {
   event.preventDefault();
@@ -63,6 +64,7 @@ $('form').on('submit', function(event) {
   getCommuteInfo();
   getNews();
 
-  $('.wrapper').fadeOut(2000, function() { $('.wrapper').remove();
+  $('.wrapper').fadeOut(2000, function() {
+    $('.wrapper').remove();
   });
 });

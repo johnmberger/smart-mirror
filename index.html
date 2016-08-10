@@ -2,11 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Smart Mirror!</title>
+    <title>Smart Mirror</title>
+
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/main.css">
+    <link rel="stylesheet" type="text/css" href="src/css/weather.css">
+    <link rel="stylesheet" type="text/css" href="src/css/form.css">
+    <link rel="stylesheet" type="text/css" href="src/css/time-date-commute-directions.css">
+
+    <!-- google fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 
     <!-- weather icons -->
@@ -118,13 +124,16 @@
         <h1 id="current-temp"></h1>
         <h3 class="high" id="current-high"></h3>
         <h3 class="low" id="current-low"></h3>
-        <h2 id="current-location"></h2>
+        <div class="inline-headers-nested">
+          <h2 id="current-location"></h2>
+          <i class="fa fa-2x fa-umbrella" aria-hidden="true"></i>
+          <p id="chance-of-rain"></p>
+        </div>
         <p id="current-status"></p>
         <div id="current-icon" class="current-icon pull-right"></div>
       </div>
-
+      <hr>
       <table>
-        <br>
         <tr>
           <td class="day" id="day-tomorrow"></td>
           <td class="icon" id="icon-tomorrow"></td>
@@ -153,10 +162,6 @@
     <!-- scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Google API -->
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU"></script>
-    <!-- custom scripts -->
     <script type="text/javascript" src="src/js/form-validation.js"></script>
     <script type="text/javascript" src="src/js/calls.js"></script>
     <script type="text/javascript" src="src/js/full-screen.js"></script>
@@ -167,5 +172,10 @@
     <script type="text/javascript" src="src/js/weather-icon-map.js"></script>
     <script type="text/javascript" src="src/js/affirmations.js"></script>
     <script type="text/javascript" src="src/js/main.js"></script>
+
+    <!-- Google API -->
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU"></script>
+
   </body>
 </html>

@@ -3,6 +3,7 @@ var commuteOption;
 
 function getCommuteInfo() {
 
+  // Initialize google maps directions service
   var directionsService = new google.maps.DirectionsService();
   var start = homeAddress + ' ' + homeZip;
   var end = workAddress + ' ' + workZip;
@@ -11,18 +12,22 @@ function getCommuteInfo() {
     destination: end,
     travelMode: commuteOption,
   };
+  // grab commute time
   directionsService.route(request, function(data) {
     commuteTime = data.routes[0].legs[0].duration.text;
-    // Call function now
+
+    // Call update function now
     updateTravelTime();
 
-    // Set looping 10-minute interval to get travel info
+    // Set looping 10-minute interval update
     setInterval(function() {
       updateTravelTime();
       console.log('Travel time updated!');
     }, 600000);
   });
 }
+
+var latLong;
 
 function getWeather() {
 
@@ -41,11 +46,11 @@ function getWeather() {
 
     latLong = data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng;
 
-    //re-formatting city name
+    // Re-formatting city names
     city = city.replace('St.', 'Saint');
     city = city.replace(/[\. ,-]+/g, "_").toLowerCase();
 
-    // weather underground forecast API call
+    // Weather Underground forecast API call
     $.ajax({
       type: 'GET',
       url: 'https://api.wunderground.com/api/e08af41f3bd0ad92/forecast/q/' + state + '/' + city + '.json',
@@ -59,18 +64,18 @@ function getWeather() {
       forecast.third.day = results.forecast.simpleforecast.forecastday[3].date.weekday_short;
 
       // Set highs for next three days
-      forecast.tomorrow.high = results.forecast.simpleforecast.forecastday[1].high.fahrenheit;
+      forecast.tomorrow.high = results.forecast.simpleforecast.forecastday[1].high.fahrenheit + '°';
 
-      forecast.second.high = results.forecast.simpleforecast.forecastday[2].high.fahrenheit;
+      forecast.second.high = results.forecast.simpleforecast.forecastday[2].high.fahrenheit + '°';
 
-      forecast.third.high = results.forecast.simpleforecast.forecastday[3].high.fahrenheit;
+      forecast.third.high = results.forecast.simpleforecast.forecastday[3].high.fahrenheit + '°';
 
       // Set lows for next three days
-      forecast.tomorrow.low = results.forecast.simpleforecast.forecastday[1].low.fahrenheit;
+      forecast.tomorrow.low = results.forecast.simpleforecast.forecastday[1].low.fahrenheit + '°';
 
-      forecast.second.low = results.forecast.simpleforecast.forecastday[2].low.fahrenheit;
+      forecast.second.low = results.forecast.simpleforecast.forecastday[2].low.fahrenheit + '°';
 
-      forecast.third.low = results.forecast.simpleforecast.forecastday[3].low.fahrenheit;
+      forecast.third.low = results.forecast.simpleforecast.forecastday[3].low.fahrenheit + '°';
 
       // Assign icons and point to correct element weatherIcons map
       var icon0 = results.forecast.simpleforecast.forecastday[0].icon;
@@ -86,9 +91,9 @@ function getWeather() {
       forecast.third.icon = weatherIcons[icon3];
 
       // Set today's high and low
-      currentWeather.high = results.forecast.simpleforecast.forecastday[0].high.fahrenheit;
+      currentWeather.high = results.forecast.simpleforecast.forecastday[0].high.fahrenheit + '°';
 
-      currentWeather.low = results.forecast.simpleforecast.forecastday[0].low.fahrenheit;
+      currentWeather.low = results.forecast.simpleforecast.forecastday[0].low.fahrenheit + '°';
 
       // Set current text forecast (only the first two sentences)
       currentWeather.stat = results.forecast.txt_forecast.forecastday[0].fcttext.split('.').slice(0,2).join('. ') + '.';
@@ -122,6 +127,9 @@ function getCurrentWeather() {
     // Setting current temp (rounding up)
     currentWeather.temp =  Math.ceil(result.currently.temperature) + '°';
 
+    // Set current chance of rain
+    currentWeather.chanceOfRain = (result.currently.precipProbability * 100) + '%';
+
     // Updating current weather with current info
     updateCurrentWeather();
 
@@ -130,12 +138,13 @@ function getCurrentWeather() {
 
 function getNews() {
 
+  // Newsapi call to get Google News headlines
   $.ajax({
     type: 'GET',
     url: 'https://newsapi.org/v1/articles?source=googlenews&sortBy=top&apiKey=ba604b50072a4ce99115e57a57765990'
   }).done(function(result) {
 
-    // Updating news with articles
+    // Updating news object with article titles
     news.article1 = result.articles[0].title;
     news.article2 = result.articles[1].title;
     news.article3 = result.articles[2].title;
