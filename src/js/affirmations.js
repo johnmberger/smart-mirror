@@ -1,6 +1,8 @@
+var affirmMarker = true;
+
 function affirm() {
 
-  var affirmationArray = [
+  var affirmations = [
       "Lookin' good!",
       'You look nice today!',
       'I like your style!',
@@ -12,14 +14,14 @@ function affirm() {
 
   function printToMirror() {
 
-    var randomAffirmation = affirmationArray[Math.floor(Math.random() * affirmationArray.length)];
+    var randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
 
     $('.fullscreen-wrapper').append('<h1 class="middle-of-screen affirmation">' + randomAffirmation + '</h1>');
 
     setTimeout(function(){
       $('.affirmation').fadeOut(2500);
     }, 6000);
-  };
+  }
 
   printToMirror();
 

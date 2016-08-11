@@ -1,9 +1,3 @@
-var homeAddress;
-var homeZip;
-var workAddress;
-var workZip;
-
-// Update forecast
 function updateForecast() {
 
   // Set Days of forecast

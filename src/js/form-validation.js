@@ -26,8 +26,8 @@ $('#home-address').on('input', function() {
   if (str.toLowerCase().indexOf('apartment') > -1) {
     $(this).css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
     $(this).removeClass('validAddress');
-  } else if (str.toLowerCase().indexOf('#') > -1) {
 
+  } else if (str.toLowerCase().indexOf('#') > -1) {
     $(this).css({'border-color': 'red', 'box-shadow': '0 0 10px red'});
     $(this).removeClass('validAddress');
 

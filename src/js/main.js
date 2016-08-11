@@ -1,41 +1,6 @@
-const forecast = {
-  tomorrow: {
-    day: '',
-    high: 0,
-    low: 0,
-    icon: '',
-  },
-  second: {
-    day: '',
-    high: 0,
-    low: 0,
-    icon: '',
-  },
-  third: {
-    day: '',
-    high: 0,
-    low: 0,
-    icon: '',
-  },
-};
-
-const currentWeather = {
-  temp: 0,
-  high: 0,
-  low: 0,
-  stat: '',
-  icon: '',
-  chanceOfRain: '',
-};
-
-const news = {
-  article1: '',
-  article2: '',
-  article3: '',
-  article4: '',
-}
-
-var affirmMarker = true;
+$(document).ready(function() {
+  getNews();
+});
 
 $('form').on('submit', function(event) {
   event.preventDefault();
@@ -49,20 +14,25 @@ $('form').on('submit', function(event) {
   commuteOption = $('input:radio[name="commuteOptions"]:checked').val();
 
   if (commuteOption === 'BICYCLING') {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-bicycle" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-bicycle" aria-hidden="true"></i>');
   } else if (commuteOption === 'WALKING') {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-male" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-male" aria-hidden="true"></i>');
   } else {
-    $('.directions-container').prepend('<i class="fa fa-2x fa-car" aria-hidden="true"></i>');
+    $('.commute-time').prepend('<i class="fa fa-2x fa-car" aria-hidden="true"></i>');
   }
 
   if ($('#affirm-checkbox').is(':checked')) {
     affirmMarker = false;
   }
 
+  var convertTime = $('#leaveTime').val().split(':')
+  for (var i = 0; i < convertTime.length; i++) {
+    convertTime[i] = parseInt(convertTime[i]);
+  };
+  workArrivalTime = (convertTime[0] * 60) + convertTime[1];
+
   getWeather();
   getCommuteInfo();
-  getNews();
 
   $('.wrapper').fadeOut(2000, function() {
     $('.wrapper').remove();
