@@ -25,14 +25,14 @@ function getLeaveByTime() {
         var timeToLeave = document.getElementById('time-to-leave');
         var pluralOrSingular = document.getElementById('post-time');
 
-        // accounting for 1 minute remaining
+        // Accounting for 1 minute remaining
         if (timeRemaining === 1) {
           pluralOrSingular.innerHTML = 'minute to get to work on time';
         } else {
           pluralOrSingular.innerHTML = 'minutes to get to work on time'
         }
 
-        // update timeReamining
+        // Update timeReamining
         $('.countdown').css('visibility', 'visible');
         timeToLeave.innerHTML = timeRemaining;
 
@@ -40,15 +40,15 @@ function getLeaveByTime() {
         $('.countdown').css('visibility', 'hidden');
       }
     }
-    // invoke function now
+    // Invoke function now
     getGoing();
-    
-    // set 1 second repeat
+
+    // Set 1 second repeat
     setInterval(function () {
         getGoing();
     }, 1000);
 
-  // hide leave-by time if no time was entered
+  // Hide leave-by time if no time was entered
   } else {
     $('.countdown').css('visibility', 'hidden');
   }
