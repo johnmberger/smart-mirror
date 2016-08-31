@@ -1,3 +1,40 @@
+const forecast = {
+  tomorrow: {
+    day: '',
+    high: 0,
+    low: 0,
+    icon: '',
+  },
+  second: {
+    day: '',
+    high: 0,
+    low: 0,
+    icon: '',
+  },
+  third: {
+    day: '',
+    high: 0,
+    low: 0,
+    icon: '',
+  },
+};
+
+const currentWeather = {
+  temp: 0,
+  high: 0,
+  low: 0,
+  stat: '',
+  icon: '',
+  chanceOfRain: '',
+};
+
+const news = {
+  article1: '',
+  article2: '',
+  article3: '',
+  article4: '',
+};
+
 // Weather Icon Map
 
 const weatherIcons = {
@@ -13,7 +50,7 @@ const weatherIcons = {
   tstorms: '<i class="wi wi-wu-tstorms"></i>',
   chanceflurries: '<i class="wi wi-wu-chancesnow"></i>',
   chancerain: '<i class="wi wi-wu-chancerain"></i>',
-  changesleet: '<i class="wi wi-wu-chancesleat"></i>',
+  chancesleet: '<i class="wi wi-wu-chancesleat"></i>',
   chancesnow: '<i class="wi wi-wu-chancesnow"></i>',
   chancetstorms: '<i class="wi wi-wu-chancetstorms"></i>',
   partlysunny: '<i class="wi wi-wu-partlysunny"></i>',

@@ -1,0 +1,29 @@
+/* initialize form */
+
+input[type="submit"] {
+  margin-top: 25px;
+}
+label {
+  vertical-align: middle;
+  font-size: 1.5rem;
+}
+input[type="submit"] {
+  margin-top: 25px;
+  vertical-align: text-top;
+}
+.initialize-form {
+  max-width: 800px;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+}
+.radio-buttons {
+  text-align: center;
+}
+.affirm-check {
+  margin-top: 15px;
+}

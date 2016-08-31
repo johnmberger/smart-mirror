@@ -2,11 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Smart Mirror!</title>
+    <title>Smart Mirror</title>
+
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="src/css/main.css">
+    <link rel="stylesheet" type="text/css" href="src/css/weather.css">
+    <link rel="stylesheet" type="text/css" href="src/css/form.css">
+    <link rel="stylesheet" type="text/css" href="src/css/time-date-commute-directions.css">
+
+    <!-- google fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 
     <!-- weather icons -->
@@ -19,37 +25,45 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper blackdrop">
+      <!-- initial form -->
+      <div class="pull-left">
+        <h1 class="title">Smart Mirror</h1>
+      </div>
       <section class="container initialize-form">
         <form method="post">
           <fieldset>
             <h1 class="text-center">We need to know a few things to get started:</h1>
             <hr>
+            <!-- home info -->
             <h3 class="text-center">Home Address <small>(where you hang your mirror)</small></h3>
             <div class="col-sm-9">
-              <label for="home-address">Home Street Address</label>
-              <input type="text" class="form-control" name="home-" id="home-address" placeholder="123 Home Street" value="1024 East 14th Ave" required>
+              <label for="home-address">Home Street Address <em>without</em> apartment number</label>
+              <input type="text" class="form-control" name="home-zip" id="home-address" placeholder="123 Home Street" required>
             </div>
             <div class="col-sm-3">
               <label for="home-zip-code">Zip Code</label>
-              <input type="number" class="form-control zip-code" name="home-zip-code" id="home-zip-code" placeholder="5-digit zip" max="99999" required value="80218">
+              <input type="number" class="form-control zip-code" name="home-zip-code" id="home-zip-code" placeholder="5-digit zip" max="99999" required>
             </div>
             <br>
           </fieldset>
           <fieldset>
-            <h3 class="text-center">Work Address <small>(for commute information)</small></h3>
+            <!-- work info -->
+            <h3 class="text-center">Work Info <small>(for commute information)</small></h3>
             <div class="col-sm-9">
               <label for="work-address">Work Address</label>
-              <input type="text" name="work-address" class="form-control" id="work-address" placeholder="123 Office Drive" value="1062 Delaware Street" required>
+              <input type="text" name="work-address" class="form-control" id="work-address" placeholder="123 Office Drive" required>
             </div>
             <div class="col-sm-3">
               <label for="work-zip-code">Zip Code</label>
-              <input type="number" class="form-control zip-code" name="work-zip-code" id="work-zip-code" placeholder="5-digit zip" max="99999" value="80204">
+              <input type="number" class="form-control zip-code" name="work-zip-code" id="work-zip-code" placeholder="5-digit zip" max="99999">
             </div>
             <br>
           </fieldset>
-          <div class="form-group radio-buttons">
-            <h3 class="text-center">How Do You Commute to Work?</h3>
+
+          <!-- commute options -->
+          <div class="form-group radio-buttons col-md-6">
+            <h3 class="text-center">How do you commute to work?</h3>
             <div class="col-sm-4">
               <label class="form-check-inline">
                 <input class="form-check-input" type="radio" name="commuteOptions" id="driving" value="DRIVING" checked><i class="fa fa-2x fa-car" aria-hidden="true"></i>Driving
@@ -66,6 +80,22 @@
               </label>
             </div>
           </div>
+          <!-- leaving time -->
+          <div class="col-md-6 text-center">
+            <fieldset>
+              <h3>What time do you have to be at work?</h3>
+              <div class="col-md-6 col-md-offset-3">
+                <input type="time" class="form-control" name="leaveTime" id="leaveTime">
+                <label for="leaveTime">(optional)</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- check for mirror message preferences -->
+          <div class="col-md-12 text-center affirm-check">
+            <hr>
+            <label><input type="checkbox" id="affirm-checkbox" value="optOut"> Turn off mirror messages</label>
+          </div>
           <div class="col-sm-12">
             <input type="submit" class="btn btn-primary btn-block" name="submit" value="Submit">
           </div>
@@ -74,48 +104,59 @@
     </div>
 
     <div class="top-left pull-left">
+      <!-- time, date, and commute time -->
       <div class="time-container">
         <h1 id="time"></h1>
       </div>
       <div class="date-container">
         <h1 id="date"></h1>
       </div>
-      <div class="directions-container">
+      <div class="directions-container commute-time">
         <h3>Current commute time: </h3>
-        <h3 id="travel-time"></h3>
+        <h3 id="travel-time">Loading...</h3>
       </div>
+      <div class="directions-container countdown">
+        <i class="fa fa-2x fa-clock-o" aria-hidden="true"></i>
+        <h3>Leave in</h3><h3 id="time-to-leave">[Loading]</h3><h3 id="post-time">minutes to get to work on time</h3>
+      </div>
+      <!-- news article containers -->
       <div class="news-container pull-left">
         <article>
           <i class="fa fa-2x fa-newspaper-o" aria-hidden="true"></i>
-          <p id="news-1"></p>
+          <p id="news-1">Fetching...</p>
         </article>
         <article>
           <i class="fa fa-2x fa-newspaper-o" aria-hidden="true"></i>
-          <p id="news-2"></p>
+          <p id="news-2">Fetching...</p>
         </article>
         <article>
           <i class="fa fa-2x fa-newspaper-o" aria-hidden="true"></i>
-          <p id="news-3"></p>
+          <p id="news-3">Fetching...</p>
         </article>
         <article>
           <i class="fa fa-2x fa-newspaper-o" aria-hidden="true"></i>
-          <p id="news-4"></p>
+          <p id="news-4">Fetching...</p>
         </article>
       </div>
     </div>
 
     <div class="top-right pull-right">
+      <!-- current weather widget -->
       <div class="current-weather-container inline-headers">
         <h1 id="current-temp"></h1>
         <h3 class="high" id="current-high"></h3>
         <h3 class="low" id="current-low"></h3>
-        <h2 id="current-location"></h2>
+        <div class="inline-headers-nested">
+          <h2 id="current-location"></h2>
+          <i class="fa fa-2x fa-umbrella" aria-hidden="true"></i>
+          <p id="chance-of-rain"></p>
+        </div>
         <p id="current-status"></p>
         <div id="current-icon" class="current-icon pull-right"></div>
       </div>
-
-      <table class="text-center">
-        <br>
+      <hr>
+      <!-- forecast table -->
+      <table>
         <tr>
           <td class="day" id="day-tomorrow"></td>
           <td class="icon" id="icon-tomorrow"></td>
@@ -137,17 +178,22 @@
       </table>
     </div>
 
+    <!-- holds button in center -->
     <div class="fullscreen-wrapper">
-      <input type='button' class='btn btn-danger btn-lg full-screen-button' value='Go Fullscreen' onclick='requestFullScreen()' id='fullscreen'>
+      <input type='button' class='btn btn-danger btn-lg middle-of-screen' value='Go Fullscreen' onclick='requestFullScreen()' id='fullscreen'>
+    </div>
+
+    <!-- warning display for too-small screens -->
+    <div class="warning-message text-center">
+      <h1>For the best experience, please view this page on a larger screen.</h1>
     </div>
 
     <!-- scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Google API -->
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU"></script>
-    <!-- custom scripts -->
+
+    <!-- js -->
+    <script type="text/javascript" src="src/js/consts.js"></script>
     <script type="text/javascript" src="src/js/form-validation.js"></script>
     <script type="text/javascript" src="src/js/calls.js"></script>
     <script type="text/javascript" src="src/js/full-screen.js"></script>
@@ -155,7 +201,12 @@
     <script type="text/javascript" src="src/js/weather.js"></script>
     <script type="text/javascript" src="src/js/commute.js"></script>
     <script type="text/javascript" src="src/js/news.js"></script>
-    <script type="text/javascript" src="src/js/weather-icon-map.js"></script>
+    <script type="text/javascript" src="src/js/affirmations.js"></script>
     <script type="text/javascript" src="src/js/main.js"></script>
+
+    <!-- Google API -->
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU"></script>
+
   </body>
 </html>

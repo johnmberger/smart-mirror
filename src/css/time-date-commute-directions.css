@@ -1,0 +1,28 @@
+/* time, date, commute, and news widget */
+
+.top-left {
+  width: 65%;
+  margin-left: 2%;
+  height: 100vh;
+  position: relative;
+}
+.date-container, .directions-container, .news-container {
+  margin-left: 3%;
+}
+.time-container h1 {
+  font-size: 14rem;
+}
+.directions-container i, .directions-container h3 {
+  display: inline-block;
+  margin-right: 5px;
+}
+.news-container {
+  position: absolute;
+  bottom: 25px;
+}
+article i, article p {
+  display: inline;
+  vertical-align: middle;
+  font-size: 1.75rem;
+  white-space: nowrap;
+}
