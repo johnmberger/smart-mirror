@@ -1,5 +1,10 @@
 $(document).ready(function() {
   getNews();
+  getBcycleInfo();
+  setInterval(function() {
+    getNews();
+    getBcycleInfo();
+  }, 600000);
 });
 
 $('form').on('submit', function(event) {
@@ -31,8 +36,35 @@ $('form').on('submit', function(event) {
   };
   workArrivalTime = (convertTime[0] * 60) + convertTime[1];
 
-  getWeather();
-  getCommuteInfo();
+  // Google Maps geocoding API call to get city name and state
+  $.ajax({
+    type: 'GET',
+    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + homeAddress + ' ' + homeZip + '&key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU',
+
+  }).done(function(data) {
+
+    // Setting city, state, and latitute/longitude based on home address
+
+    state = data.results[0].address_components[data.results[0].address_components.length - 4].short_name;
+
+    city = data.results[0].address_components[3].long_name;
+    locationNow = data.results[0].address_components[3].long_name;
+
+    latLong = data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng;
+
+    // Re-formatting city names
+    city = city.replace('St.', 'Saint');
+    city = city.replace(/[\. ,-]+/g, "_").toLowerCase();
+
+    getWeather();
+    getCommuteInfo();
+
+    setInterval(function() {
+      getWeather();
+      getCommuteInfo();
+    }, 600000);
+    
+  });
 
   $('.wrapper').fadeOut(2000, function() {
     $('.wrapper').remove();

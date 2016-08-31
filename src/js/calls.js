@@ -3,6 +3,10 @@ var homeAddress;
 var homeZip;
 var workAddress;
 var workZip;
+var state;
+var city;
+var bikesAvailable;
+var docksAvailable;
 
 function getCommuteInfo() {
 
@@ -28,12 +32,7 @@ function getCommuteInfo() {
       // Call update function now
       updateTravelTime();
       getLeaveByTime();
-
-      // Set looping 10-minute interval update
-      setInterval(function() {
-        updateTravelTime();
-        console.log('Travel time updated!');
-      }, 600000);
+      console.log('directions updated');
     }
   });
 }
@@ -41,25 +40,6 @@ function getCommuteInfo() {
 var latLong;
 
 function getWeather() {
-
-  // Google Maps geocoding API call to get city name and state
-  $.ajax({
-    type: 'GET',
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + homeAddress + ' ' + homeZip + '&key=AIzaSyD46wfvOAuJ42fx0lCbeTf0iPQuVqCVrqU',
-
-  }).done(function(data) {
-
-    // Setting city, state, and latitute/longitude based on home address
-    var state = data.results[0].address_components[data.results[0].address_components.length - 4].short_name;
-
-    var city = data.results[0].address_components[3].long_name;
-    locationNow = data.results[0].address_components[3].long_name;
-
-    latLong = data.results[0].geometry.location.lat + ',' + data.results[0].geometry.location.lng;
-
-    // Re-formatting city names
-    city = city.replace('St.', 'Saint');
-    city = city.replace(/[\. ,-]+/g, "_").toLowerCase();
 
     // Weather Underground forecast API call
     $.ajax({
@@ -115,19 +95,10 @@ function getWeather() {
       // Call weather getters/setters now
       updateForecast();
       getCurrentWeather();
+      console.log('forecast updated');
 
-      // Set looping 10 minute interval to re-call functions
-      setInterval(function() {
-        updateForecast();
-        getCurrentWeather();
-        console.log('Forecast updated!');
-        console.log('Current Weather Updated!');
-      }, 600000);
     }).fail(function() {
       alert('Weather Underground API Error!');
-    });
-  }).fail(function() {
-    alert('Google Geocoding API Error!');
   });
 }
 
@@ -169,12 +140,8 @@ function getNews() {
 
     // Update news displayed now
     updateNews();
+    console.log('news updated');
 
-    // Set looping interval to update news every 10 minutes
-    setInterval(function() {
-      updateNews();
-      console.log('News Updated!');
-    }, 600000);
   }).fail(function() {
     alert('News API error occurred!');
   });
@@ -182,9 +149,19 @@ function getNews() {
 
 function getBcycleInfo() {
   $.ajax({
-    type: 'GET'
-    url: 'https://gbfs.bcycle.com/bcycle_denver/station_information.json'
+    type: 'GET',
+    url: 'https://gbfs.bcycle.com/bcycle_denver/station_status.json'
   }).done(function(result) {
-    console.log(result.stations[52]);
+
+    bikesAvailable = result.data.stations[52].num_bikes_available;
+    docksAvailable = result.data.stations[52].num_docks_available;
+
+    var bcycleInfo = document.getElementById('bcycle');
+    bcycleInfo.innerHTML = `Bikes: ${bikesAvailable} Docks: ${docksAvailable}`;
+
+    if (bikesAvailable < 2) {
+      $('#bcycle').css('color', 'darkred');
+    }
+    console.log('bcycle info updated');
   });
 }

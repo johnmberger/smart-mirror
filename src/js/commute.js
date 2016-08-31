@@ -42,8 +42,6 @@ function getLeaveByTime() {
     }
     // Invoke function now
     getGoing();
-
-    // Set 1 second repeat
     setInterval(function () {
         getGoing();
     }, 1000);
