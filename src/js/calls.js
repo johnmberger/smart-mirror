@@ -148,3 +148,12 @@ function getNews() {
     }, 600000);
   })
 }
+
+function getBcycleInfo() {
+  $.ajax({
+    type: 'GET'
+    url: 'https://gbfs.bcycle.com/bcycle_denver/station_information.json'
+  }).done(function(result) {
+    console.log(result.stations[52]);
+  });
+}
