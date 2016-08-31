@@ -11,6 +11,7 @@ function getLeaveByTime() {
 
     function getGoing() {
 
+      // Calculate time now and leave time
       var now = new Date;
       var hour = now.getHours();
       var minutes = now.getMinutes();
@@ -18,23 +19,20 @@ function getLeaveByTime() {
       var nowTotal = (hour * 60) + minutes;
       var timeRemaining = (workArrivalTime - nowTotal) - parseInt(commuteTime);
 
-      if (timeRemaining <= 180) {
-        $('#commute-time').css('visibility', 'visible');
-      } else {
-        $('#commute-time').css('visibility', 'hidden');
-      }
-
+      // Show time to leave when timeReamining is less than 60 minutes
       if (timeRemaining < 60 && timeRemaining > 0 && day !== 0 && day !== 6) {
 
         var timeToLeave = document.getElementById('time-to-leave');
         var pluralOrSingular = document.getElementById('post-time');
 
+        // Accounting for 1 minute remaining
         if (timeRemaining === 1) {
           pluralOrSingular.innerHTML = 'minute to get to work on time';
         } else {
           pluralOrSingular.innerHTML = 'minutes to get to work on time'
         }
 
+        // Update timeReamining
         $('.countdown').css('visibility', 'visible');
         timeToLeave.innerHTML = timeRemaining;
 
@@ -42,11 +40,15 @@ function getLeaveByTime() {
         $('.countdown').css('visibility', 'hidden');
       }
     }
-
+    // Invoke function now
     getGoing();
+
+    // Set 1 second repeat
     setInterval(function () {
         getGoing();
     }, 1000);
+
+  // Hide leave-by time if no time was entered
   } else {
     $('.countdown').css('visibility', 'hidden');
   }

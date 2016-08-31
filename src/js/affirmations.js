@@ -3,13 +3,14 @@ var affirmMarker = true;
 function affirm() {
 
   var affirmations = [
-      "Lookin' good!",
-      'You look nice today!',
-      'I like your style!',
-      "You're awesome!",
-      'Hey there!',
-      'You look great!',
-      'Hi!',
+      // "Lookin' good!",
+      // 'You look nice today!',
+      // 'I like your style!',
+      // "You're awesome!",
+      // 'Hey there!',
+      // 'You look great!',
+      // 'Hi!',
+      '<img src="src/img/mullet.gif" alt="mullet" />'
     ];
 
   function printToMirror() {

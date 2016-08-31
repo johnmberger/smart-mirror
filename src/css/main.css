@@ -12,7 +12,11 @@ i {
 p {
   font-size: 2rem;
 }
-
+.title {
+  margin-left: 15px;
+  padding: 2px;
+  border: 1px solid white;
+}
 /* full screen button */
 .fullscreen-wrapper {
   position: absolute;

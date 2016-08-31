@@ -15,7 +15,7 @@ function getCommuteInfo() {
     destination: end,
     travelMode: commuteOption,
   };
-  // grab commute time
+  // Grab commute time
   directionsService.route(request, function(data) {
 
     if (data.status !== 'OK' || typeof data == 'undefined') {
