@@ -67,6 +67,10 @@ function getWeather() {
       url: 'https://api.wunderground.com/api/e08af41f3bd0ad92/forecast/q/' + state + '/' + city + '.json',
     }).done(function(results) {
 
+      if (results.forecast.simpleforecast == undefined) {
+        alert('Weather Underground API Error!');
+        location.reload();
+      }
       // Set names of next three days
       forecast.tomorrow.day = results.forecast.simpleforecast.forecastday[1].date.weekday_short;
 
@@ -111,6 +115,7 @@ function getWeather() {
 
       // Set current chance of rain
       currentWeather.chanceOfRain = results.forecast.txt_forecast.forecastday[0].pop + '%';
+
 
       // Call weather getters/setters now
       updateForecast();
