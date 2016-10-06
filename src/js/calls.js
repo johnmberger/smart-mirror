@@ -157,10 +157,12 @@ function getBcycleInfo() {
     docksAvailable = result.data.stations[52].num_docks_available;
 
     var bcycleInfo = document.getElementById('bcycle');
-    bcycleInfo.innerHTML = `Bikes: ${bikesAvailable} Docks: ${docksAvailable}`;
+    bcycleInfo.innerHTML = `Bikes: ${bikesAvailable} | Docks: ${docksAvailable}`;
 
     if (bikesAvailable < 2) {
       $('#bcycle').css('color', 'darkred');
+    } else {
+      $('#bcycle').css('color', 'white');
     }
     console.log('bcycle info updated');
   });
