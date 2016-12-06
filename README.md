@@ -1,10 +1,10 @@
 # Smart Mirror v1.0
 
+[![forthebadge](http://forthebadge.com/images/badges/as-seen-on-tv.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/powered-by-netflix.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/fo-sho.svg)](http://forthebadge.com)
-
 [![forthebadge](http://forthebadge.com/images/badges/does-not-contain-treenuts.svg)](http://forthebadge.com)
-[![forthebadge](http://forthebadge.com/images/badges/as-seen-on-tv.svg)](http://forthebadge.com)
+
 
 This is my first attempt at a smart mirror.
 
